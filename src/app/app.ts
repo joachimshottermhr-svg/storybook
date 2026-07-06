@@ -1,8 +1,10 @@
 import { Component, signal } from '@angular/core';
 
+import { AbsenceCardComponent } from '../stories/absence-card.component';
+
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [AbsenceCardComponent],
   template: `
     <main class="storybook-shell">
       <header class="storybook-shell__header">
@@ -12,6 +14,10 @@ import { Component, signal } from '@angular/core';
         </div>
         <a href="https://6a4b893fba40a186d0975a47-oclzgmkkui.chromatic.com/" target="_blank" rel="noreferrer">Open Storybook</a>
       </header>
+
+      <section class="storybook-shell__demo">
+        <storybook-absence-card></storybook-absence-card>
+      </section>
 
       <iframe
         title="Storybook"
@@ -82,6 +88,16 @@ import { Component, signal } from '@angular/core';
         font-size: 14px;
         font-weight: 700;
         text-decoration: none;
+      }
+
+      .storybook-shell__demo {
+        display: flex;
+        justify-content: center;
+        padding: 24px;
+        border: 1px solid #d9dde3;
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
       }
 
       .storybook-shell__frame {
