@@ -10,12 +10,12 @@ import { Component, signal } from '@angular/core';
           <p class="storybook-shell__eyebrow">Builder.io preview</p>
           <h1>{{ title() }}</h1>
         </div>
-        <a href="https://6a4b893fba40a186d0975a47-oclzgmkkui.chromatic.com/" target="_blank" rel="noreferrer">Open Storybook</a>
+        <a href="https://6a4b893fba40a186d0975a47-bpdnyghvsg.chromatic.com/" target="_blank" rel="noreferrer">Open Storybook</a>
       </header>
 
       <iframe
         title="Storybook"
-        src="https://6a4b893fba40a186d0975a47-oclzgmkkui.chromatic.com/"
+        src="https://6a4b893fba40a186d0975a47-bpdnyghvsg.chromatic.com/"
         class="storybook-shell__frame"
       ></iframe>
     </main>
