@@ -95,3 +95,33 @@
     grid-column: 2;
   }
 }
+.absence-card__tag {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.absence-card__tag--booked {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.absence-card__tag--pending {
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.absence-card__tag--approved {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.absence-card__tag--holiday {
+  background: #f5f3ff;
+  color: #6d28d9;
+}

@@ -9,6 +9,12 @@ const meta: Meta<AbsenceCardComponent> = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    tag: {
+      control: 'select',
+      options: ['Booked', 'Pending', 'Approved', 'Holiday'],
+    },
+  },
 };
 
 export default meta;
@@ -20,6 +26,7 @@ export const Default: Story = {
     annualTotal: '36',
     sicknessDays: 3,
     upcomingDates: '09 - 14 Mar 2025 (4 days)',
+    tag: 'Booked',
   },
 };
 
@@ -29,5 +36,6 @@ export const Compact: Story = {
     annualTotal: '24',
     sicknessDays: 1,
     upcomingDates: '22 - 23 Apr 2025 (2 days)',
+    tag: 'Pending',
   },
 };

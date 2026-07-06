@@ -19,14 +19,17 @@ import { Component, Input } from '@angular/core';
         <span class="absence-card__subtext">{{ sicknessSubtext }}</span>
       </section>
 
-      <section class="absence-card__upcoming" aria-label="Upcoming absence">
+        <section class="absence-card__upcoming" aria-label="Upcoming absence">
         <div class="absence-card__plane" aria-hidden="true">✈</div>
         <div class="absence-card__details">
-          <span class="absence-card__label">Upcoming absence</span>
-          <strong>{{ upcomingDates }}</strong>
+            <span class="absence-card__label">Upcoming absence</span>
+            <strong>{{ upcomingDates }}</strong>
+            <span class="absence-card__tag" [ngClass]="'absence-card__tag--' + tag.toLowerCase()">
+            {{ tag }}
+            </span>
         </div>
         <div class="absence-card__timer" aria-hidden="true">⌛</div>
-      </section>
+        </section>
     </article>
   `,
   styleUrls: ['./absence-card.css'],
@@ -39,4 +42,5 @@ export class AbsenceCardComponent {
   @Input() sicknessDays = 3;
   @Input() sicknessSubtext = 'Sickness days this year';
   @Input() upcomingDates = '09 - 14 Mar 2025 (4 days)';
+  @Input() tag: 'Booked' | 'Pending' | 'Approved' | 'Holiday' = 'Booked';
 }
