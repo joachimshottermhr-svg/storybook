@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* =====================================================================
+   Design tokens — single source of truth
+   ---------------------------------------------------------------------
+   Mirrors Figma "Collection 1". Leaf names match Figma exactly so the
+   design and code vocabularies stay in sync.
+
+   Rule: components reference these tokens, never literal values.
+     Correct:  color: var(--color-text);
+     Wrong:    color: #333333;
+   ===================================================================== */
+:root {
+  /* --- color --- */
+  --color-background: #ffffff;
+  --color-text-muted: #666666;
+  --color-surface: #4c7286;
+  --color-primary: #50a9c2;
+  --color-text: #333333;
+  --color-border: rgba(204, 204, 204, 0.8); /* Figma: #CCCCCC @ 80% */
+  --color-danger: #fb6262;
+
+  /* --- font-size --- */
+  --font-size-sm: 12px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+
+  /* --- font-weight --- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* --- spacing --- */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* --- radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* =====================================================================
+     Semantic (component-scoped) tokens — mirror Figma "button/*" tokens.
+     These alias the primitives above so a theme can remap them in one
+     place. Leaf names match Figma exactly (button/primary/background →
+     --button-primary-background).
+     ===================================================================== */
+  --button-primary-background: var(--color-primary);
+  --button-primary-text: var(--color-background);
+  --button-secondary-background: var(--color-background);
+  --button-secondary-text: var(--color-text);
+  --button-secondary-border: var(--color-border);
+  --button-danger-background: var(--color-danger);
+  --button-danger-text: var(--color-background);
+  --button-ghost-text: var(--color-text);
+}

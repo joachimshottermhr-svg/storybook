@@ -34,6 +34,7 @@ import type { User } from './user';
         </span>
         <storybook-button
           *ngIf="user"
+          variant="secondary"
           size="small"
           (onClick)="onLogout.emit($event)"
           label="Log out"
@@ -42,6 +43,7 @@ import type { User } from './user';
       <div *ngIf="!user">
         <storybook-button
           *ngIf="!user"
+          variant="secondary"
           size="small"
           class="margin-left"
           (onClick)="onLogin.emit($event)"
@@ -50,7 +52,7 @@ import type { User } from './user';
         <storybook-button
           *ngIf="!user"
           size="small"
-          [primary]="true"
+          variant="primary"
           class="margin-left"
           (onClick)="onCreateAccount.emit($event)"
           label="Sign up"

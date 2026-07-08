@@ -7,26 +7,26 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   imports: [CommonModule],
   template: ` <button
   type="button"
-  (click)="onClick.emit($event)"
   [ngClass]="classes"
-  [ngStyle]="{ 'background-color': backgroundColor }"
+  [disabled]="disabled"
+  (click)="onClick.emit($event)"
 >
   {{ label }}
 </button>`,
   styleUrls: ['./button.css'],
 })
 export class ButtonComponent {
-  /** Is this the principal call to action on the page? */
+  /** Visual style of the button. Mirrors the Figma "Variant" property. */
   @Input()
-  primary = false;
-
-  /** What background color to use */
-  @Input()
-  backgroundColor?: string;
+  variant: 'primary' | 'secondary' | 'danger' | 'ghost' = 'primary';
 
   /** How large should the button be? */
   @Input()
   size: 'small' | 'medium' | 'large' = 'medium';
+
+  /** Disable the button (non-interactive, dimmed). */
+  @Input()
+  disabled = false;
 
   /**
    * Button contents
@@ -41,8 +41,10 @@ export class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
+    return [
+      'storybook-button',
+      `storybook-button--${this.size}`,
+      `storybook-button--${this.variant}`,
+    ];
   }
 }

@@ -1,32 +1,51 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { ButtonComponent } from '../stories/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [ButtonComponent],
   template: `
-    <main class="storybook-shell">
-      <header class="storybook-shell__header">
-        <div>
-          <p class="storybook-shell__eyebrow">Builder.io preview</p>
-          <h1>{{ title() }}</h1>
-        </div>
-        <a href="https://6a4b893fba40a186d0975a47-gyxuarlalf.chromatic.com/" target="_blank" rel="noreferrer">Open Storybook</a>
+    <main class="demo">
+      <header class="demo__header">
+        <p class="demo__eyebrow">PeopleFirst · live demo</p>
+        <h1>Component demo</h1>
+        <p class="demo__sub">
+          Stage 3 of the pipeline: real components, consumed as code and styled entirely by
+          design tokens.
+        </p>
       </header>
 
-      <iframe
-        title="Storybook"
-        src="https://6a4b893fba40a186d0975a47-gyxuarlalf.chromatic.com/"
-        class="storybook-shell__frame"
-      ></iframe>
+      <section class="demo__section">
+        <h2>Button</h2>
+
+        <div class="demo__row">
+          <storybook-button variant="primary" label="Primary"></storybook-button>
+          <storybook-button variant="secondary" label="Secondary"></storybook-button>
+          <storybook-button variant="danger" label="Danger"></storybook-button>
+          <storybook-button variant="ghost" label="Ghost"></storybook-button>
+        </div>
+
+        <div class="demo__row">
+          <storybook-button variant="primary" size="small" label="Small"></storybook-button>
+          <storybook-button variant="primary" size="medium" label="Medium"></storybook-button>
+          <storybook-button variant="primary" size="large" label="Large"></storybook-button>
+        </div>
+
+        <div class="demo__row">
+          <storybook-button variant="primary" [disabled]="true" label="Disabled"></storybook-button>
+          <storybook-button variant="secondary" [disabled]="true" label="Disabled"></storybook-button>
+        </div>
+      </section>
     </main>
   `,
   styles: [
     `
+      /* The demo chrome dogfoods the same tokens the components use. */
       :host {
         display: block;
         min-height: 100vh;
-        background: #f6f7f9;
-        color: #111827;
+        background: var(--color-background);
+        color: var(--color-text);
         font-family:
           Inter,
           ui-sans-serif,
@@ -37,65 +56,66 @@ import { Component, signal } from '@angular/core';
           sans-serif;
       }
 
-      .storybook-shell {
+      .demo {
         display: flex;
-        min-height: 100vh;
         flex-direction: column;
-        gap: 16px;
-        padding: 16px;
+        gap: var(--spacing-xl);
+        max-width: 880px;
+        margin: 0 auto;
+        padding: var(--spacing-xl);
         box-sizing: border-box;
       }
 
-      .storybook-shell__header {
+      .demo__header {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 16px 20px;
-        border: 1px solid #d9dde3;
-        border-radius: 14px;
-        background: #ffffff;
-        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+        flex-direction: column;
+        gap: var(--spacing-xs);
       }
 
-      .storybook-shell__eyebrow {
-        margin: 0 0 4px;
-        color: #6b7280;
-        font-size: 12px;
-        font-weight: 700;
+      .demo__eyebrow {
+        margin: 0;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
       h1 {
         margin: 0;
-        font-size: 24px;
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
         line-height: 1.2;
       }
 
-      a {
-        flex: 0 0 auto;
-        border-radius: 999px;
-        background: #ff4785;
-        color: #ffffff;
-        padding: 10px 16px;
-        font-size: 14px;
-        font-weight: 700;
-        text-decoration: none;
+      .demo__sub {
+        margin: 0;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-md);
       }
 
-      .storybook-shell__frame {
-        flex: 1;
-        min-height: 720px;
-        width: 100%;
-        border: 1px solid #d9dde3;
-        border-radius: 14px;
-        background: #ffffff;
-        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      .demo__section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-medium);
+      }
+
+      .demo__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--spacing-md);
       }
     `,
   ],
 })
-export class App {
-  protected readonly title = signal('Storybook');
-}
+export class App {}
