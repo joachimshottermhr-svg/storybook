@@ -68,3 +68,8 @@
   border-radius: var(--radius-lg);
   font-size: var(--font-size-lg);
 }
+
+/* --- modifiers --- */
+.storybook-button--full {
+  width: 100%;
+}

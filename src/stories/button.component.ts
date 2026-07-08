@@ -28,6 +28,10 @@ export class ButtonComponent {
   @Input()
   disabled = false;
 
+  /** Stretch the button to fill the width of its container. */
+  @Input()
+  fullWidth = false;
+
   /**
    * Button contents
    *
@@ -41,10 +45,14 @@ export class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    return [
+    const classes = [
       'storybook-button',
       `storybook-button--${this.size}`,
       `storybook-button--${this.variant}`,
     ];
+    if (this.fullWidth) {
+      classes.push('storybook-button--full');
+    }
+    return classes;
   }
 }
