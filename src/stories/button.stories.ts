@@ -27,6 +27,17 @@ export const Primary: Story = {
     variant: 'primary',
     label: 'Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '⚠️ **Known WCAG 2.2 AA failure.** White text on `--color-primary` (#50a9c2) ' +
+          'is ~2.3:1 contrast — below the 4.5:1 minimum for normal text. Built as designed ' +
+          'in Figma; needs a design-token fix (darken the primary background or the text). ' +
+          'The a11y addon will report this violation.',
+      },
+    },
+  },
 };
 
 export const Secondary: Story = {
@@ -40,6 +51,16 @@ export const Danger: Story = {
   args: {
     variant: 'danger',
     label: 'Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '⚠️ **Known WCAG 2.2 AA failure.** White text on `--color-danger` (#fb6262) ' +
+          'is ~2.5:1 contrast — below the 4.5:1 minimum for normal text. Built as designed ' +
+          'in Figma; needs a design-token fix. The a11y addon will report this violation.',
+      },
+    },
   },
 };
 
