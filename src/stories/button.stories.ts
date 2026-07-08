@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from 'storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 import { ButtonComponent } from './button.component';
 
@@ -37,6 +37,18 @@ export const Primary: Story = {
           'The a11y addon will report this violation.',
       },
     },
+  },
+  // Assert the a11y basics: the button has an accessible name, is reachable
+  // by keyboard, and is operable.
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalled();
   },
 };
 
@@ -90,5 +102,19 @@ export const Disabled: Story = {
     variant: 'primary',
     disabled: true,
     label: 'Button',
+  },
+  // A disabled button must be truly inert: not keyboard-focusable and it
+  // must not fire click handlers.
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+
+    await expect(button).toBeDisabled();
+
+    await userEvent.tab();
+    await expect(button).not.toHaveFocus();
+
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
   },
 };
